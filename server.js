@@ -3,6 +3,7 @@ var cors = require("cors");
 var db = require("./sqlitedb.js");
 var cloud= require("./readBucket.js");
 var stream = require("./streamer.js")
+var env =require('dotenv').config();
 var app = express();
 app.use(cors());
 const corsOptions = {
@@ -18,7 +19,7 @@ var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 const bucketName = 'storage-awarri_llm';
-var HTTP_PORT =process.env.PORT ||  8000;
+var HTTP_PORT = process.env.PORT || 3000;
 app.listen(HTTP_PORT, () => {
   console.log("Server running on port %PORT%".replace("%PORT%", HTTP_PORT));
 });
